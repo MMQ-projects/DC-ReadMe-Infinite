@@ -16,7 +16,7 @@ def save_last_update(time_update):
         file.write(str(time_update))
 
 current_time = get_current_time()
-if Path("last_update.txt").exists():
+if Path("last_update.txt").exists() and Path("last_update.txt").stat().st_size > 0:
     loaded_time = load_last_update()
 
 else:
@@ -26,12 +26,14 @@ else:
 # At this point, the project was GitHubbed. Date: 2026.09.23
 
 elapsed_time = current_time - loaded_time
+def update_check(elapsed_time):
+    if elapsed_time >= timedelta(hours=30):
+        return "ERROR_EVENT"
 
-if elapsed_time >= timedelta(hours=30):
-    print("HIBERNÁCIÓ VÉGE")
+    elif elapsed_time >= timedelta(hours=24):
+        return "UPDATE"
 
-elif elapsed_time >= timedelta(hours=24):
-    print("UPDATE KELLENE")
+    else:
+        return "WAIT"
 
-else:
-    print("MÉG NEM")
+update_status = update_check(elapsed_time)

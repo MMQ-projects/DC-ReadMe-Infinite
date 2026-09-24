@@ -12,7 +12,7 @@ def progress_writer(percent_value):
 percent_value = progress_reader()
 print("Uploading README.txt about user...\n")
 
-# A random +-x% ugrás
+# A random +-x% ugrás 
 upload_jump = random.randint(-5, 5)
 
 if upload_jump == 0:

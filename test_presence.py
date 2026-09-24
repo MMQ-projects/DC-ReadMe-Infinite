@@ -1,7 +1,7 @@
 from pypresence import Presence
 import time
 
-CLIENT_ID = "1548258204952043520"
+CLIENT_ID = "YOUR_CLIENT_ID_HERE"  # Replace with your actual Discord application client ID
 
 rpc = Presence(CLIENT_ID)
 rpc.connect()
